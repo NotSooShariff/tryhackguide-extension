@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "TryHackMe Guide",
+  "version": "1.0",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://tryhackme.api-cloud.one/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://tryhackme.com/r/room/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "toggle-popup": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+H"
+      },
+      "description": "Toggle TryHackGuide Extension popup"
+    }
+  }
+}
